@@ -1,0 +1,32 @@
+type Query {
+  obtenerPersonas: [People],
+  obtenerPersonaPorNombre(nombre: String!): [People]
+
+}
+
+type People {
+  id: ID!
+  nombre: String!
+  fechaDeNacimiento: String!
+  direccion: String!
+  email: String!
+}
+
+type Mutation {
+  crearPersona(input: PersonInput!): People
+}
+
+input PersonInput {
+  nombre: String!
+  fechaDeNacimiento: String!
+  direccion: String!
+  email: String!
+}
+
+type Mutation {
+  actualizarPersona(id: ID!, input: PersonInput!): People
+}
+
+type Mutation {
+  eliminarPersona(id: ID!): Boolean
+}

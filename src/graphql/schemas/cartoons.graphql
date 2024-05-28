@@ -1,0 +1,13 @@
+type Query{
+    hello: String!,
+    obtenerDibujoAnimado: [Cartoon]
+}
+
+type Cartoon {
+  id: ID!
+  nombre: String!
+  ciudad: String!
+  pais: String!
+  fechaDeNacimiento: String!
+  AnoDeCreacion: Int!
+}

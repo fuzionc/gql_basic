@@ -1,0 +1,34 @@
+type Usuario {
+ _id: ID!
+ nombre: String!
+ email: String!
+ creadoEn: String
+ actualizadoEn: String
+}
+
+type Query {
+ obtenerUsuarios: [Usuario!]!
+ obtenerUsuarioPorId(_id: ID): Usuario
+ obtenerUsuarioActual(token: String): Usuario
+}
+
+input UsuarioInput {
+ nombre: String!
+ email: String!
+ password: String!
+}
+
+type Token {
+ token: String!
+}
+
+input AutenticacionInput {
+ email: String!
+ password: String!
+}
+
+type Mutation {
+ crearUsuario(usuarioInput: UsuarioInput): String
+ actualizarUsuario(_id: ID, usuarioInput: UsuarioInput): String
+ autenticarUsuario(autenticacionInput: AutenticacionInput): Token
+}

@@ -1,0 +1,21 @@
+type Habilidad {
+  _id: ID!
+  nombre: String!
+}
+
+input HabilidadInput {
+  nombre: String!
+}
+
+type Query {
+  obtenerHabilidades: [Habilidad]
+}
+
+type Mutation {
+  crearHabilidad(habilidad: HabilidadInput!): String!
+  actualizarHabilidad(_id: ID, habilidad: EditarHabilidadInput!): String!
+}
+
+input EditarHabilidadInput {
+  nombre: String
+}

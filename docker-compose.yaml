@@ -1,0 +1,28 @@
+version: "3"
+services:
+  app:
+    build:
+      context: ./be_grahpql
+      dockerfile: .Dockerfile
+    ports:
+      - 37111:4000
+    environment:
+      - PORT=4000
+      - MONGO_URI=mongodb://admin:secret@mongodb:27017
+      - DB_NAME=invoicerdb
+    depends_on:
+      - mongodb
+
+  mongodb:
+    image: mongo:latest
+    ports:
+      - 27017:27017
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=secret
+  fe_test:
+    build:
+      context: ./fe_test
+      dockerfile: .Dockerfile
+    ports:
+      - 37112:80
